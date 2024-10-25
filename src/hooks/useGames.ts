@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 
+import apiClient from "@/services/api-client";
+
 import { FetchGamesResponse } from "@/types/FetchGamesResponse";
 import { Game } from "@/types/Game";
-
-import apiClient from "@/services/api-client";
 
 const useGames = () => {
     const [games, setGames] = useState<Game[]>([]);
@@ -12,8 +12,6 @@ const useGames = () => {
 
     useEffect(() => {
         const controller = new AbortController();
-
-        console.log("URL DEL BACKEND:", import.meta.env.VITE_BACKEND_API_URL)
 
         apiClient
             .get<FetchGamesResponse>(`${import.meta.env.VITE_BACKEND_API_URL}/games`)
