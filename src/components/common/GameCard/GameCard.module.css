@@ -1,3 +1,15 @@
 .cntCard {
     background-color: #edf2fb;
 }
+
+.cntCardBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.cntIcons_Rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}

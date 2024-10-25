@@ -31,19 +31,21 @@ const PlatformIconList = ({ platforms }: Props) => {
 
   return (
     <>
-      {platforms.map((platform) => {
-          const IconComponent = iconMap[platform.slug.toLocaleLowerCase()];
+      <div>
+        {platforms.map((platform) => {
+            const IconComponent = iconMap[platform.slug.toLocaleLowerCase()];
 
-          if (!IconComponent) return null;
+            if (!IconComponent) return null;
 
-          return (
-            <IconComponent 
-                key={platform.id}
-                size={20}
-                color="#979dac"
-            />
-          )
-      })}
+            return (
+                <IconComponent 
+                    key={platform.id}
+                    size={20}
+                    color="#979dac"
+                />
+            )
+        })}
+      </div>
     </>
   );
 };
