@@ -4,6 +4,7 @@ import { Button, Card } from "react-bootstrap";
 import style from "./GameCard.module.css";
 import PlatformIconList from "@/components/PlatformIconList";
 import CriticScore from "../CriticScore/CriticScore";
+import getCroppedImageUrl from "@/services/images-url";
 
 interface GameCardProps {
   game: Game;
@@ -12,7 +13,7 @@ interface GameCardProps {
 const GameCard = ({ game }: GameCardProps) => {
   return (
     <Card className={style.cntCard}>
-      <Card.Img variant="top" src={game.background_image} />
+      <Card.Img variant="top" src={getCroppedImageUrl(game.background_image)} />
       <Card.Body className={style.cntCardBody}>
         <Card.Title>{game.name}</Card.Title>
         <Button variant="primary">More info...</Button>

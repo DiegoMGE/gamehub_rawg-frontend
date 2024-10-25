@@ -6,9 +6,9 @@ import {
   FaLinux,
   FaAndroid,
 } from "react-icons/fa";
-import { MdPhoneIphone } from 'react-icons/md';
-import { SiNintendo } from 'react-icons/si';
-import { BsGlobe } from 'react-icons/bs';
+import { MdPhoneIphone } from "react-icons/md";
+import { SiNintendo } from "react-icons/si";
+import { BsGlobe } from "react-icons/bs";
 import { Platform } from "@/types/Game";
 import { IconType } from "react-icons";
 
@@ -17,36 +17,28 @@ interface Props {
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
-    const iconMap: {[key: string]: IconType} = {
-        pc: FaWindows,
-        playstation: FaPlaystation,
-        xbox: FaXbox,
-        nintendo: SiNintendo,
-        mac: FaApple,
-        linux: FaLinux,
-        android: FaAndroid,
-        ios: MdPhoneIphone,
-        web: BsGlobe
-    }
+  const iconMap: { [key: string]: IconType } = {
+    pc: FaWindows,
+    playstation: FaPlaystation,
+    xbox: FaXbox,
+    nintendo: SiNintendo,
+    mac: FaApple,
+    linux: FaLinux,
+    android: FaAndroid,
+    ios: MdPhoneIphone,
+    web: BsGlobe,
+  };
 
   return (
-    <>
-      <div>
-        {platforms.map((platform) => {
-            const IconComponent = iconMap[platform.slug.toLocaleLowerCase()];
+    <div>
+      {platforms.map((platform, index) => {
+        const IconComponent = iconMap[platform.slug.toLocaleLowerCase()];
 
-            if (!IconComponent) return null;
+        if (!IconComponent) return null;
 
-            return (
-                <IconComponent 
-                    key={platform.id}
-                    size={20}
-                    color="#979dac"
-                />
-            )
-        })}
-      </div>
-    </>
+        return <IconComponent key={index} size={20} color="#979dac" />;
+      })}
+    </div>
   );
 };
 
