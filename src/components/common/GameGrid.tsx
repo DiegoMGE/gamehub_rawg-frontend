@@ -1,5 +1,3 @@
-// import apiClient from '../../../src/services/api-client';
-
 import useGames from "@/hooks/useGames";
 
 const GameGrid = () => {
