@@ -1,13 +1,58 @@
-import useGenres from '@/hooks/useGenres';
+import { Image, ListGroup, Modal, Spinner } from "react-bootstrap";
+
+import useGenres from "@/hooks/useGenres";
+import getCroppedImageUrl from "@/services/images-url";
+
+import style from "./GenreList.module.css";
+import { useEffect, useState } from "react";
 
 const GenreList = () => {
-    const { data } = useGenres();
+  const { data, loading, error } = useGenres();
+  const [smShow, setSmShow] = useState(false);
+
+  useEffect(() => {
+    if (error) {
+      setSmShow(true);
+    } else {
+      setSmShow(false);
+    }
+  }, [error]);
+
+  if (loading) return <Spinner />;
 
   return (
-    <ul>
-        {data.map(data => <li key={data.id}>{data.name}</li> )}
-    </ul>
-  )
-}
+    <>
+      {smShow && (
+        <Modal
+          size="sm"
+          show={smShow}
+          onHide={() => setSmShow(false)}
+          aria-labelledby="example-modal-sizes-title-sm"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="example-modal-sizes-title-sm">
+              Something is wrong!
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            It looks like we cannot retrieve Genres right now, try refreshing
+            again the page.
+          </Modal.Body>
+        </Modal>
+      )}
 
-export default GenreList
+      <div className={style.cntGenreList}>
+        <ListGroup>
+          {data.map((data) => (
+            <div className={style.GenreImage} key={data.id}>
+              <Image src={getCroppedImageUrl(data.image_background)} />
+              {data.name}
+            </div>
+          ))}
+        </ListGroup>
+      </div>
+    </>
+  );
+};
+
+export default GenreList;
