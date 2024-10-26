@@ -1,8 +1,11 @@
+import GenreList from '@/components/common/GenreList/GenreList'
 import style from './Sidebar.module.css'
 
 const Sidebar = () => {
   return (
-    <aside className={style.container}>SIDEBAR</aside>
+    <div className={style.cntSidebar}>
+      <GenreList />
+    </div>
   )
 }
 
