@@ -1,12 +1,17 @@
-import { Image, ListGroup, Modal, Spinner } from "react-bootstrap";
+import { Button, Image, ListGroup, Modal, Spinner } from "react-bootstrap";
 
 import useGenres from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/images-url";
 
 import style from "./GenreList.module.css";
 import { useEffect, useState } from "react";
+import { GenreProps } from "@/types/Genres";
 
-const GenreList = () => {
+interface GenreListProps {
+  onSelectGenre: (genre: GenreProps) => void;
+}
+
+const GenreList = ({ onSelectGenre }:GenreListProps) => {
   const { data, loading, error } = useGenres();
   const [smShow, setSmShow] = useState(false);
 
@@ -46,7 +51,11 @@ const GenreList = () => {
           {data.map((data) => (
             <div className={style.GenreImage} key={data.id}>
               <Image src={getCroppedImageUrl(data.image_background)} />
-              {data.name}
+              <Button onClick={() => {
+                onSelectGenre(data)
+              }} variant='link'>
+                {data.name}
+              </Button>
             </div>
           ))}
         </ListGroup>
