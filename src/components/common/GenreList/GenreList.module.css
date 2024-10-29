@@ -1,8 +1,5 @@
 .GenreImage {
-    /* border: 1px solid #d2d2d2; */
-    /* border-radius: 7px; */
     margin-bottom: 5px;
-    /* padding: 5px; */
 }
 
 .GenreImage:last-child {
@@ -15,4 +12,8 @@
     margin-right: 5px;
     height: 35px;
     width: 35px;
+}
+
+.selectedGenreText {
+    font-weight: 700;
 }

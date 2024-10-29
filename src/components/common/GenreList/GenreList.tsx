@@ -8,10 +8,11 @@ import { useEffect, useState } from "react";
 import { GenreProps } from "@/types/Genres";
 
 interface GenreListProps {
+  selectedGenre: GenreProps | null;
   onSelectGenre: (genre: GenreProps) => void;
 }
 
-const GenreList = ({ onSelectGenre }:GenreListProps) => {
+const GenreList = ({ selectedGenre, onSelectGenre }:GenreListProps) => {
   const { data, loading, error } = useGenres();
   const [smShow, setSmShow] = useState(false);
 
@@ -53,7 +54,9 @@ const GenreList = ({ onSelectGenre }:GenreListProps) => {
               <Image src={getCroppedImageUrl(data.image_background)} />
               <Button onClick={() => {
                 onSelectGenre(data)
-              }} variant='link'>
+              }} 
+              className={data.id === selectedGenre?.id ? style.selectedGenreText : ''}
+              variant='link'>
                 {data.name}
               </Button>
             </div>

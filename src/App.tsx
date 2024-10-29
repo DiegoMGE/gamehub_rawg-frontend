@@ -17,7 +17,7 @@ function App() {
         <Header />
         <div className="content">
           <div>
-            <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+            <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
           </div>
           <GameGrid selectedGenre={selectedGenre} />
         </div>
