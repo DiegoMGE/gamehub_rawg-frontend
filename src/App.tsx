@@ -7,9 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { GenreProps } from "./types/Genres";
 import GenreList from "./components/common/GenreList/GenreList";
+import PlatformSelector from "./components/common/PlatformSelector/PlatformSelector";
+import { Platform } from "./types/Game";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<GenreProps | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
 
   return (
     <>
@@ -19,7 +22,10 @@ function App() {
           <div>
             <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
           </div>
-          <GameGrid selectedGenre={selectedGenre} />
+          <div>
+            <PlatformSelector selectedPlatform={selectedPlatform} onSelectedPlatform={(platform) => setSelectedPlatform(platform)}/>
+            <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
+          </div>
         </div>
         <Footer />
       </div>
