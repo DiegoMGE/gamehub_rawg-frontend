@@ -1,7 +1,7 @@
 .container {
     color: #000;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 400px;
     align-items: center;
 }
 
