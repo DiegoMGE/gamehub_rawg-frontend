@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <div className={`main-container`}>
-        <Header />
+        <Header onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}/>
         <div className="content">
           <div>
             <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
