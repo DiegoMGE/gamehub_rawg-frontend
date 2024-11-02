@@ -25,7 +25,7 @@ function App() {
           </div>
           <div>
             <PlatformSelector selectedPlatform={gameQuery.platform} onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}/>
-              <SortSelector />
+              <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}/>
             <GameGrid gameQuery={gameQuery} />
           </div>
         </div>
