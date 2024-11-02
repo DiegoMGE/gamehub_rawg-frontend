@@ -1,18 +1,18 @@
+import { useState } from "react";
+
 import Header from "./components/layout/Header/Header";
 import GameGrid from "./components/common/GameGrid/GameGrid";
 import Footer from "./components/layout/Footer/Footer";
+import GenreList from "./components/common/GenreList/GenreList";
+import PlatformSelector from "./components/common/PlatformSelector/PlatformSelector";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-import { GenreProps } from "./types/Genres";
-import GenreList from "./components/common/GenreList/GenreList";
-import PlatformSelector from "./components/common/PlatformSelector/PlatformSelector";
-import { Platform } from "./types/Game";
+
+import { GameQuery } from "./types/GameQuery";
 
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<GenreProps | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <>
@@ -20,11 +20,11 @@ function App() {
         <Header />
         <div className="content">
           <div>
-            <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
+            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
           </div>
           <div>
-            <PlatformSelector selectedPlatform={selectedPlatform} onSelectedPlatform={(platform) => setSelectedPlatform(platform)}/>
-            <GameGrid selectedPlatform={selectedPlatform} selectedGenre={selectedGenre} />
+            <PlatformSelector selectedPlatform={gameQuery.platform} onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}/>
+            <GameGrid gameQuery={gameQuery} />
           </div>
         </div>
         <Footer />

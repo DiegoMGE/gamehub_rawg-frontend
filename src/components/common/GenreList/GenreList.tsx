@@ -41,8 +41,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }:GenreListProps) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            It looks like we cannot retrieve Genres right now, try refreshing
-            again the page.
+            It looks like we cannot retrieve Genres right now, try refreshing again the page.
           </Modal.Body>
         </Modal>
       )}
@@ -53,10 +52,11 @@ const GenreList = ({ selectedGenre, onSelectGenre }:GenreListProps) => {
             <div className={style.GenreImage} key={data.id}>
               <Image src={getCroppedImageUrl(data.image_background)} />
               <Button onClick={() => {
-                onSelectGenre(data)
+                onSelectGenre(data);
               }} 
               className={data.id === selectedGenre?.id ? style.selectedGenreText : ''}
-              variant='link'>
+              variant='link'
+              >
                 {data.name}
               </Button>
             </div>
